@@ -32,8 +32,7 @@ export default function Home() {
 
   const [showPassword, setShowPassword] = useState(false);
 
-  const clientId =
-    "733104915800-ii8moe3lrcoocsvpa89jhkqj6m970dc7.apps.googleusercontent.com";
+  const clientId = import.meta.env.VITE_GOOGLE_CLIENT_ID;
 
   useEffect(() => {
     function start() {
@@ -47,7 +46,7 @@ export default function Home() {
 
   const handleSuccess = (googleData) => {
     axios
-      .post("http://localhost:8000/users/logingoogle", {
+      .post(`${import.meta.env.VITE_BE_URL}/users/logingoogle`, {
         tokenId: googleData.tokenId,
       })
       .then((res) => {
@@ -71,7 +70,7 @@ export default function Home() {
       return swal("Error", "Lengkapi semua kolom terlebih dahulu!", "error");
 
     axios
-      .post("http://localhost:8000/users/login", {
+      .post(`${import.meta.env.VITE_BE_URL}/users/login`, {
         email: email,
         password: password,
       })

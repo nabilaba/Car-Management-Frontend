@@ -35,14 +35,14 @@ export default function TambahData() {
     formData.append("image", file);
 
     axios
-      .post("http://localhost:8000/cars/upload", formData, {
+      .post(`${import.meta.env.VITE_BE_URL}/cars/upload`, formData, {
         headers: {
           Authorization: `Bearer ${localStorage.getItem("token")}`,
         },
       })
       .then((res) => {
-        input.value = `http://localhost:8000/${res.data.path}`;
-        setImageUrl(`http://localhost:8000/${res.data.path}`);
+        input.value = `${import.meta.env.VITE_BE_URL}/${res.data.path}`;
+        setImageUrl(`${import.meta.env.VITE_BE_URL}/${res.data.path}`);
       })
       .catch((err) => {
         swal("Error!", err.response.data.message, "error");
@@ -60,7 +60,7 @@ export default function TambahData() {
     };
 
     axios
-      .post("http://localhost:8000/cars", data, {
+      .post(`${import.meta.env.VITE_BE_URL}/cars`, data, {
         headers: {
           Authorization: `Bearer ${localStorage.getItem("token")}`,
         },

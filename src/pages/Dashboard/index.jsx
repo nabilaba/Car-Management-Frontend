@@ -26,7 +26,7 @@ const Dashboard = () => {
 
   const getData = () => {
     axios
-      .get("http://localhost:8000/cars", {
+      .get(`${import.meta.env.VITE_BE_URL}/cars`, {
         headers: {
           Authorization: `Bearer ${localStorage.getItem("token")}`,
         },
@@ -45,7 +45,7 @@ const Dashboard = () => {
     getData();
 
     axios
-      .get("http://localhost:8000/users/me", {
+      .get(`${import.meta.env.VITE_BE_URL}/users/me`, {
         headers: {
           Authorization: `Bearer ${localStorage.getItem("token")}`,
         },
@@ -90,7 +90,7 @@ const Dashboard = () => {
     }).then((willDelete) => {
       if (willDelete) {
         axios
-          .delete(`http://localhost:8000/cars/${id}`, {
+          .delete(`${import.meta.env.VITE_BE_URL}/cars/${id}`, {
             headers: {
               Authorization: `Bearer ${localStorage.getItem("token")}`,
             },
@@ -123,7 +123,7 @@ const Dashboard = () => {
     }).then((willDelete) => {
       if (willDelete) {
         axios
-          .delete(`http://localhost:8000/cars/permanent/${id}`, {
+          .delete(`${import.meta.env.VITE_BE_URL}/cars/permanent/${id}`, {
             headers: {
               Authorization: `Bearer ${localStorage.getItem("token")}`,
             },
@@ -157,7 +157,7 @@ const Dashboard = () => {
       if (willDelete) {
         axios
           .put(
-            `http://localhost:8000/cars/${id}`,
+            `${import.meta.env.VITE_BE_URL}/cars/${id}`,
             {
               deletedBy: null,
               deletedAt: null,

@@ -37,7 +37,7 @@ export default function Mendaftar() {
       return swal("Error", "Lengkapi semua kolom terlebih dahulu!", "error");
 
     axios
-      .post("http://localhost:8000/users/register", {
+      .post(`${import.meta.env.VITE_BE_URL}/users/register`, {
         name: name,
         email: email,
         password: password,

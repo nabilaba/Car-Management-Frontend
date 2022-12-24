@@ -6,26 +6,8 @@ import TambahData from "./pages/TambahData";
 import UpdateData from "./pages/UpdateData";
 import TambahAdmin from "./pages/TambahAdmin";
 import Layout from "./templates/Layout";
-import { useEffect, useState } from "react";
-import axios from "axios";
 
 function App() {
-  const [role, setRole] = useState("user");
-
-  useEffect(() => {
-    if (localStorage.getItem("token")) {
-      axios
-        .get("http://localhost:8000/users/me", {
-          headers: {
-            Authorization: `Bearer ${localStorage.getItem("token")}`,
-          },
-        })
-        .then((res) => {
-          setRole(res.data.role);
-        });
-    }
-  }, []);
-
   return (
     <Routes>
       <Route path="/" element={<Layout />}>
